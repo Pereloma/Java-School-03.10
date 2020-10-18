@@ -11,6 +11,17 @@ public class Task1 {
     */
     public static void main(String[] args) {
         String a = "топот";
-        var symbol = a.charAt(0);
+        //var symbol = a.charAt(0);
+
+        System.out.println(palindrome(0,a));
+    }
+
+    public static boolean palindrome (int n,String text){
+        if(text.charAt(n) == text.charAt(text.length()-n-1)){
+            if(n == text.length()/2)
+                return true;
+            else
+                return palindrome(n+1,text);
+        }else return false;
     }
 }
