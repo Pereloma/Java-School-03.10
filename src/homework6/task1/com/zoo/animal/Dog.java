@@ -1,6 +1,6 @@
 package homework6.task1.com.zoo.animal;
 
-import homework5.task1.com.zoo.exception.BitingException;
+import homework6.task1.com.zoo.exception.BitingException;
 
 public class Dog extends Animal implements Running,Biting {
     public Dog(String name) {
@@ -24,6 +24,10 @@ public class Dog extends Animal implements Running,Biting {
 
     @Override
     public void bite(Animal animal) throws BitingException {
-        System.out.println(String.format("%s is bite %s",name,animal));
+        if(animal == null){
+            throw new BitingException("can't bite noll");
+        }else {
+            System.out.println(String.format("%s is bite %s", name, animal));
+        }
     }
 }

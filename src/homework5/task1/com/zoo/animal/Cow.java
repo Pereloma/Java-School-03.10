@@ -18,5 +18,6 @@ public class Cow extends Animal implements Running{
     @Override
     public void run(int meters) {
         System.out.println(String.format("%s is run %s meters",name,meters));
+        
     }
 }

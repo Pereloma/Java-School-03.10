@@ -24,6 +24,10 @@ public class Lion extends Animal implements Running, Biting {
 
     @Override
     public void bite(Animal animal) throws BitingException {
-        System.out.println(String.format("%s is bite %s",name,animal));
+        if(animal == null){
+            throw new BitingException("can't bite noll");
+        }else {
+            System.out.println(String.format("%s is bite %s", name, animal));
+        }
     }
 }
