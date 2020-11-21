@@ -59,11 +59,12 @@ public class Main {
 
         private static String toReversePolishNotation (String expression){
 
-        while (true){
+/*        while (true){
             if(expression.matches("[0123456789]+\\+[0123456789]+")){
-                expression
+
             }
         }
+*/
         return expression;
         }
     }
