@@ -11,21 +11,8 @@ public class Main {
         }
 
         System.out.println("В обратной польской нотации выражение будет иметь вид:");
-        String reversePolishNotation = new String(args[0]);
-        char tempCharacter;
-        for (int i = 0; i < reversePolishNotation.length(); i++) {
-            tempCharacter = reversePolishNotation.charAt(i);
-            if(tempCharacter == '('){
-                for (int j = i; j < reversePolishNotation.length(); j++) {
-                    if(tempCharacter == '('){
-                        break;
-                    }
-                    else if(tempCharacter == ')'){
-                        toReversePolishNotation(reversePolishNotation.substring(i,j));
-                    }
-                }
-            }
-        }
+        System.out.printf(toReversePolishNotation(args[0]));
+
 
 
 
@@ -58,13 +45,57 @@ public class Main {
         }
 
         private static String toReversePolishNotation (String expression){
-
-/*        while (true){
-            if(expression.matches("[0123456789]+\\+[0123456789]+")){
-
+        expression = expression.replaceAll(" ","");
+        ArrayDeque<Character> res = new ArrayDeque<>(){
+            @Override
+            public String toString() {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (Character character: this){
+                    stringBuilder.append(character);
+                }
+                return stringBuilder.toString();
             }
+        };
+
+        while (!expression.isEmpty()){
+            if(expression.contains("^")){
+                toReversePolishNotation(expression,'^',res);
+            }
+            expression = "";
         }
-*/
-        return expression;
+        return res.toString();
+        }
+
+    private static void toReversePolishNotation (String expression, char fCharacter, ArrayDeque res){
+        int i = 0;
+        int j;
+        char character;
+        while (expression.contains(Character.toString(fCharacter))){
+            character = expression.charAt(i);
+            if(character == fCharacter){
+                j=i;
+                while ((j-1 >= 0) && Character.isDigit(expression.charAt(j-1)))
+                    j--;
+                i++;
+                while (i+2 <= expression.length() && Character.isDigit(expression.charAt(i+1)))
+                    i++;
+
+                if(Character.isDigit(expression.charAt(j))){
+                    for (; j <= i; i--) {
+                        if (!Character.isDigit(expression.charAt(j))){
+
+                        }
+                        else {
+                            res
+                        }
+                    }
+                }
+            }
+
+            if((i+2) <= expression.length())
+                i++;
+            else
+                break;
         }
     }
+}
