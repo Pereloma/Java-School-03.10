@@ -4,14 +4,18 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Comparator<Integer> integerComparator = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                if(getPrimeDivisors(o1)>getPrimeDivisors(o2))
-                    return -1;
-                else return 1;
-            }
-        };
+        Comparator<Integer> integerComparator;
+//        integerComparator = new Comparator<Integer>() {
+//            @Override
+//            public int compare(Integer o1, Integer o2) {
+//                if(getPrimeDivisors(o1)>getPrimeDivisors(o2))
+//                    return -1;
+//                else return 1;
+//            }
+//        };
+
+        integerComparator = Comparator.comparing(obj -> getPrimeDivisors(obj));
+
         List<Integer> integers = new ArrayList<Integer>();
         for (int i = 0; i < 10; i++) {
             integers.add((int)(Math.random()*99d)+1);
