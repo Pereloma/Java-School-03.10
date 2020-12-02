@@ -17,6 +17,7 @@ public class Main {
     }
 
     public static void printTree(File dir){
+        System.out.println(dir.getAbsolutePath());
         StringBuilder prefix = new StringBuilder();
         printTree(dir,prefix);
     }
